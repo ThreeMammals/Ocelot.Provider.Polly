@@ -2,20 +2,18 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Ocelot.Logging;
-using Ocelot.Requester.QoS;
 using Polly;
 using Polly.CircuitBreaker;
-using Polly.Timeout;
 
 namespace Ocelot.Provider.Polly
 {
     public class PollyCircuitBreakingDelegatingHandler : DelegatingHandler
     {
-        private readonly IQoSProvider _qoSProvider;
+        private readonly PollyQoSProvider _qoSProvider;
         private readonly IOcelotLogger _logger;
 
         public PollyCircuitBreakingDelegatingHandler(
-            IQoSProvider qoSProvider,
+            PollyQoSProvider qoSProvider,
             IOcelotLoggerFactory loggerFactory)
         {
             _qoSProvider = qoSProvider;

@@ -1,25 +1,26 @@
-using System;
-using System.Net.Http;
-using Ocelot.Configuration;
-using Ocelot.Logging;
-using Polly;
-using Polly.CircuitBreaker;
-using Polly.Timeout;
-
 namespace Ocelot.Provider.Polly
 {
-    public class PollyQoSProvider : IQoSProvider
+    using System;
+    using System.Net.Http;
+    using global::Polly;
+    using global::Polly.CircuitBreaker;
+    using global::Polly.Timeout;
+    using Ocelot.Configuration;
+    using Ocelot.Logging;
+
+    public class PollyQoSProvider
     {
         private readonly CircuitBreakerPolicy _circuitBreakerPolicy;
         private readonly TimeoutPolicy _timeoutPolicy;
         private readonly IOcelotLogger _logger;
-        private readonly CircuitBreaker _circuitBreaker;
 
         public PollyQoSProvider(DownstreamReRoute reRoute, IOcelotLoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger<PollyQoSProvider>();
 
-            _timeoutPolicy = Policy.TimeoutAsync(TimeSpan.FromMilliseconds(reRoute.QosOptions.TimeoutValue), reRoute.QosOptions.TimeoutStrategy);
+            Enum.TryParse(reRoute.QosOptions.TimeoutStrategy, out TimeoutStrategy strategy);
+
+            _timeoutPolicy = Policy.TimeoutAsync(TimeSpan.FromMilliseconds(reRoute.QosOptions.TimeoutValue), strategy);
 
             _circuitBreakerPolicy = Policy
                 .Handle<HttpRequestException>()
@@ -43,9 +44,9 @@ namespace Ocelot.Provider.Polly
                     }
                 );
 
-            _circuitBreaker = new CircuitBreaker(_circuitBreakerPolicy, _timeoutPolicy);
+            CircuitBreaker = new CircuitBreaker(_circuitBreakerPolicy, _timeoutPolicy);
         }
 
-        public CircuitBreaker CircuitBreaker => _circuitBreaker;
+        public CircuitBreaker CircuitBreaker { get; }
     }
 }

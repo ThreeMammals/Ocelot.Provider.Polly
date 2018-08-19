@@ -1,10 +1,9 @@
 [<img src="http://threemammals.com/images/ocelot_logo.png">](http://threemammals.com/ocelot)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/8ry4ailt7rr5mbu7?svg=true)](https://ci.appveyor.com/project/TomPallister/ocelot-cache-cachemanager)
-Windows (AppVeyor)
-[![Build Status](https://travis-ci.org/ThreeMammals/Ocelot.Provider.Polly.svg?branch=master)](https://travis-ci.org/ThreeMammals/Ocelot.Provider.Polly) Linux & OSX (Travis)
+[![Build status](https://ci.appveyor.com/api/projects/status/64dld693t29wgikc?svg=true)](https://ci.appveyor.com/project/TomPallister/ocelot-provider-polly) Windows (AppVeyor)
+[![Build Status](https://travis-ci.org/ThreeMammals/Ocelot.Provider.Polly.svg?branch=develop)](https://travis-ci.org/ThreeMammals/Ocelot.Provider.Polly) Linux & OSX (Travis)
 
-[![Coverage Status](https://coveralls.io/repos/github/ThreeMammals/Ocelot.Provider.Polly/badge.svg?branch=develop)](https://coveralls.io/github/ThreeMammals/Ocelot.Provider.Polly?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/ThreeMammals/Ocelot.Provider.Polly/badge.svg)](https://coveralls.io/github/ThreeMammals/Ocelot.Provider.Polly)
 
 # Ocelot
 
