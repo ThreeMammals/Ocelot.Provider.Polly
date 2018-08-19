@@ -7,7 +7,7 @@
 
 # Ocelot
 
-This package adds [Consul](https://www.consul.io/) support to Ocelot via the package [Consul](https://github.com/PlayFab/consuldotnet).
+This package adds [Polly](https://github.com/App-vNext/Polly) support to Ocelot.
 
 ## How to install
 
