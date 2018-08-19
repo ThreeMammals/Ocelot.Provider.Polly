@@ -25,7 +25,7 @@
                 })
                 .ConfigureServices(s => {
                     s.AddOcelot()
-                        .AddSomething();
+                        .AddPolly();
                 })
                 .ConfigureLogging((hostingContext, logging) =>
                 {
